@@ -11,6 +11,9 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-bg-deep text-slate-200 font-sans antialiased selection:bg-brand-primary/30;
   }

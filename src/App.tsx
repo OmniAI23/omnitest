@@ -1,12 +1,28 @@
-import { Navbar, Hero, Capabilities, Footer } from "./components/LandingPage";
+import { useState } from "react";
+import { Navbar, Hero, Capabilities, Pricing, Footer } from "./components/LandingPage";
+import { AuthPage } from "./components/Auth";
 
 export default function App() {
+  const [view, setView] = useState<"home" | "login" | "signup">("home");
+
+  if (view === "login" || view === "signup") {
+    return (
+      <AuthPage 
+        initialMode={view} 
+        onBack={() => setView("home")} 
+      />
+    );
+  }
+
+  const navigateToAuth = (mode: "login" | "signup") => setView(mode);
+
   return (
     <div className="min-h-screen selection:bg-brand-primary/20">
-      <Navbar />
+      <Navbar onAuth={navigateToAuth} />
       <main>
-        <Hero />
+        <Hero onAuth={navigateToAuth} />
         <Capabilities />
+        <Pricing onAuth={navigateToAuth} />
         
         {/* Why section */}
         <section className="py-24 px-6 bg-white/[0.02] border-y border-white/5">
@@ -74,7 +90,10 @@ export default function App() {
             <div className="absolute inset-0 brand-gradient opacity-10 pointer-events-none" />
             <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">Ready to Automate<br />Your Support?</h2>
             <p className="text-slate-400 text-lg mb-12">Join 500+ companies using OmniserviceAI to power the future of customer experience.</p>
-            <button className="px-10 py-5 rounded-2xl brand-gradient text-white font-bold text-lg hover:shadow-[0_0_30px_rgba(139,92,246,0.4)] transition-all">
+            <button 
+              onClick={() => navigateToAuth("signup")}
+              className="px-10 py-5 rounded-2xl brand-gradient text-white font-bold text-lg hover:shadow-[0_0_30px_rgba(139,92,246,0.4)] transition-all"
+            >
               Start Free Trial
             </button>
           </div>
