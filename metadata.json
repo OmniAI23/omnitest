@@ -1,0 +1,6 @@
+{
+  "name": "OmniserviceAI",
+  "description": "A high-performance landing page for a multimodal, multilingual AI agent support platform capable of voice, text, and autonomous actions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
