@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Bot, MessageSquare, Mic, Globe, Zap, Shield, ArrowRight, Play, CheckCircle2 } from "lucide-react";
+import logo from "../assets/images/omniservice_clean_logo_1779803976909.png";
 
 export const Navbar = () => (
   <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
@@ -7,7 +8,7 @@ export const Navbar = () => (
       <div className="flex items-center gap-3">
         <div className="w-12 h-12 flex items-center justify-center overflow-hidden">
           <img 
-            src="/src/assets/images/omniservice_clean_logo_1779803976909.png" 
+            src={logo} 
             alt="OmniserviceAI Logo" 
             className="w-full h-full object-contain"
             referrerPolicy="no-referrer"
@@ -155,7 +156,7 @@ export const Footer = () => (
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 flex items-center justify-center overflow-hidden">
           <img 
-            src="/src/assets/images/omniservice_clean_logo_1779803976909.png" 
+            src={logo} 
             alt="OmniserviceAI Logo" 
             className="w-full h-full object-contain"
             referrerPolicy="no-referrer"
