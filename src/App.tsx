@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Navbar, Hero, Capabilities, Pricing, Footer } from "./components/LandingPage";
 import { AuthPage } from "./components/Auth";
+import { DemoPage } from "./components/Demo";
 
 export default function App() {
-  const [view, setView] = useState<"home" | "login" | "signup">("home");
+  const [view, setView] = useState<"home" | "login" | "signup" | "demo">("home");
 
   if (view === "login" || view === "signup") {
     return (
@@ -14,7 +15,11 @@ export default function App() {
     );
   }
 
-  const navigateToAuth = (mode: "login" | "signup") => setView(mode);
+  if (view === "demo") {
+    return <DemoPage onBack={() => setView("home")} />;
+  }
+
+  const navigateToAuth = (mode: "home" | "login" | "signup" | "demo") => setView(mode);
 
   return (
     <div className="min-h-screen selection:bg-brand-primary/20">

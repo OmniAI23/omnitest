@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Bot, MessageSquare, Mic, Globe, Zap, Shield, ArrowRight, Play, CheckCircle2, Menu, X } from "lucide-react";
 import logo from "../assets/images/omniservice_clean_logo_1779803976909.png";
 
-export const Navbar = ({ onAuth }: { onAuth: (mode: "login" | "signup") => void }) => {
+export const Navbar = ({ onAuth }: { onAuth: (mode: "home" | "login" | "signup" | "demo") => void }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -18,12 +18,15 @@ export const Navbar = ({ onAuth }: { onAuth: (mode: "login" | "signup") => void 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300 ${scrolled ? 'translate-y-0' : 'translate-y-2'}`}>
       <div className={`max-w-7xl mx-auto flex items-center justify-between px-6 py-3 rounded-full transition-all duration-300 ${scrolled ? 'glass-card shadow-lg bg-bg-deep/80' : 'bg-transparent'}`}>
-        <div className="flex items-center gap-3">
+        <div 
+          className="flex items-center gap-3 cursor-pointer group"
+          onClick={() => onAuth("home")}
+        >
           <div className="w-20 h-20 flex items-center justify-center overflow-hidden">
             <img 
               src={logo} 
               alt="OmniserviceAI Logo" 
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain group-hover:scale-105 transition-transform"
               referrerPolicy="no-referrer"
             />
           </div>
@@ -109,7 +112,7 @@ export const FeatureCard = ({ icon: Icon, title, description, delay = 0 }) => (
   </motion.div>
 );
 
-export const Hero = ({ onAuth }: { onAuth: (mode: "login" | "signup") => void }) => (
+export const Hero = ({ onAuth }: { onAuth: (mode: "login" | "signup" | "demo") => void }) => (
   <section className="relative pt-32 pb-20 px-6 overflow-hidden">
     {/* Decorative background gradients */}
     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-[500px] bg-brand-primary/10 blur-[120px] rounded-full -z-10" />
@@ -155,7 +158,10 @@ export const Hero = ({ onAuth }: { onAuth: (mode: "login" | "signup") => void })
         >
           Launch Your Agent <ArrowRight className="w-5 h-5" />
         </button>
-        <button className="w-full sm:w-auto px-8 py-4 rounded-2xl glass-card text-white font-bold flex items-center justify-center gap-2 hover:bg-white/5 transition-all">
+        <button 
+          onClick={() => onAuth("demo")}
+          className="w-full sm:w-auto px-8 py-4 rounded-2xl glass-card text-white font-bold flex items-center justify-center gap-2 hover:bg-white/5 transition-all"
+        >
           <Play className="w-5 h-5 fill-current" /> View Demo
         </button>
       </motion.div>
@@ -211,7 +217,7 @@ export const Capabilities = () => (
   </section>
 );
 
-export const Pricing = ({ onAuth }: { onAuth: (mode: "login" | "signup") => void }) => (
+export const Pricing = ({ onAuth }: { onAuth: (mode: "login" | "signup" | "demo") => void }) => (
   <section id="pricing" className="py-24 px-6 max-w-7xl mx-auto">
     <div className="text-center mb-16">
       <h2 className="text-3xl md:text-5xl font-bold mb-4">Scalable Pricing for Every Scale.</h2>

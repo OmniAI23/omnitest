@@ -28,7 +28,10 @@ export const AuthPage = ({ initialMode = "login", onBack }: { initialMode?: "log
         className="w-full max-w-md"
       >
         <div className="flex flex-col items-center mb-8 text-center">
-          <div className="w-32 h-32 mb-4">
+          <div 
+            className="w-32 h-32 mb-4 cursor-pointer hover:scale-105 transition-transform"
+            onClick={onBack}
+          >
             <img src={logo} alt="Logo" className="w-full h-full object-contain" />
           </div>
           <h1 className="text-3xl font-bold tracking-tight">
